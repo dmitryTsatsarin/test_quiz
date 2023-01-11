@@ -56,11 +56,11 @@
       }
 
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/VK10.loader.js";
+      var loaderUrl = buildUrl + "/VK12.loader.js";
       var config = {
-        dataUrl: buildUrl + "/VK10.data.unityweb",
-        frameworkUrl: buildUrl + "/VK10.framework.js.unityweb",
-        codeUrl: buildUrl + "/VK10.wasm.unityweb",
+        dataUrl: buildUrl + "/VK12.data.unityweb",
+        frameworkUrl: buildUrl + "/VK12.framework.js.unityweb",
+        codeUrl: buildUrl + "/VK12.wasm.unityweb",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "Quiz",
@@ -122,7 +122,12 @@
     <script type="text/javascript">
 
       vkBridge.send('VKWebAppInit');
-
+      function auth(){
+        vkBridge.send('VKWebAppGetUserInfo').then(_info =>{
+          console.log(_info);
+          unityI.SendMessage('VKSDK', 'AuthenticateSuccess', JSON.stringify(_info));
+        });
+      }
 
       function showRewardedAd(){
         vkBridge.send('VKWebAppShowNativeAds',{ad_format:"reward"}).then(data => {
