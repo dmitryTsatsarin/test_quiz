@@ -121,17 +121,7 @@
     <script type="text/javascript">
 
       vkBridge.send('VKWebAppInit');
-      vkBridge.subscribe((e) => {
-      	if (e.detail.type === 'VKWebAppViewHide') {
-              	unityI.SendMessage('VKSDK', 'PlayOff');
-  		}
-	});
-      
-      vkBridge.subscribe((e) => {
-      	if (e.detail.type === 'VKWebAppViewRestore') {
-              	unityI.SendMessage('VKSDK', 'PlayOn');
-  		}
-	});
+
       function auth(){
         vkBridge.send('VKWebAppGetUserInfo').then(_info =>{
           console.log(_info);
@@ -144,7 +134,17 @@
           console.log(data);
           unityI.SendMessage('VKSDK', 'RewardGetting',JSON.stringify(data.result));})
       }
+      vkBridge.send.subscribe(event => {
 
+  switch(event.detail.type) {
+    case 'VKWebAppViewHide':
+      unityI.SendMessage('VKSDK', 'PlayOff');
+      break;
+    case 'VKWebAppViewRestore':
+      unityI.SendMessage('VKSDK', 'PlayOn');
+      break;
+  }
+});
 
     </script>
   </body>
