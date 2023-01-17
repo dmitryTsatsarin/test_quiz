@@ -55,11 +55,11 @@
       }
 
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/VK20.loader.js";
+      var loaderUrl = buildUrl + "/VK21.loader.js";
       var config = {
-        dataUrl: buildUrl + "/VK20.data.unityweb",
-        frameworkUrl: buildUrl + "/VK20.framework.js.unityweb",
-        codeUrl: buildUrl + "/VK20.wasm.unityweb",
+        dataUrl: buildUrl + "/VK21.data.unityweb",
+        frameworkUrl: buildUrl + "/VK21.framework.js.unityweb",
+        codeUrl: buildUrl + "/VK21.wasm.unityweb",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "Quiz",
@@ -123,13 +123,13 @@
       vkBridge.send('VKWebAppInit');
       vkBridge.subscribe((e) => {
       	if (e.detail.type === 'VKWebAppViewHide') {
-              	unityI.SendMessage('VKSDK', 'PauseOff');
+              	unityI.SendMessage('VKSDK', 'PlayOff');
   		}
 	});
       
       vkBridge.subscribe((e) => {
       	if (e.detail.type === 'VKWebAppViewRestore') {
-              	unityI.SendMessage('VKSDK', 'PauseOn');
+              	unityI.SendMessage('VKSDK', 'PlayOn');
   		}
 	});
       function auth(){
