@@ -123,13 +123,13 @@
       vkBridge.send('VKWebAppInit');
       vkBridge.subscribe((e) => {
       	if (e.detail.type === 'VKWebAppViewHide') {
-              	unityI.SendMessage('VKSDK', 'PlayOff');
+              	unityI.SendMessage('VKSDK', 'PauseOff');
   		}
 	});
       
       vkBridge.subscribe((e) => {
       	if (e.detail.type === 'VKWebAppViewRestore') {
-              	unityI.SendMessage('VKSDK', 'PlayOn');
+              	unityI.SendMessage('VKSDK', 'PauseOn');
   		}
 	});
       function auth(){
