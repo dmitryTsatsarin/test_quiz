@@ -134,7 +134,7 @@
           console.log(data);
           unityI.SendMessage('VKSDK', 'RewardGetting',JSON.stringify(data.result));})
       }
-      vkBridge.send.subscribe(event => {
+      vkBridge.subscribe(event => {
 
   switch(event.detail.type) {
     case 'VKWebAppViewHide':
