@@ -55,11 +55,11 @@
       }
 
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/VK21.loader.js";
+      var loaderUrl = buildUrl + "/VK22.loader.js";
       var config = {
-        dataUrl: buildUrl + "/VK21.data.unityweb",
-        frameworkUrl: buildUrl + "/VK21.framework.js.unityweb",
-        codeUrl: buildUrl + "/VK21.wasm.unityweb",
+        dataUrl: buildUrl + "/VK22.data.unityweb",
+        frameworkUrl: buildUrl + "/VK22.framework.js.unityweb",
+        codeUrl: buildUrl + "/VK22.wasm.unityweb",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "Quiz",
@@ -121,7 +121,17 @@
     <script type="text/javascript">
 
       vkBridge.send('VKWebAppInit');
-
+      vkBridge.subscribe((e) => {
+      	if (e.detail.type === 'VKWebAppViewHide') {
+              	unityI.SendMessage('VKSDK', 'PlayOff');
+  		}
+	});
+      
+      vkBridge.subscribe((e) => {
+      	if (e.detail.type === 'VKWebAppViewRestore') {
+              	unityI.SendMessage('VKSDK', 'PlayOn');
+  		}
+	});
       function auth(){
         vkBridge.send('VKWebAppGetUserInfo').then(_info =>{
           console.log(_info);
@@ -134,17 +144,7 @@
           console.log(data);
           unityI.SendMessage('VKSDK', 'RewardGetting',JSON.stringify(data.result));})
       }
-      vkBridge.subscribe(event => {
 
-  switch(event.detail.type) {
-    case 'VKWebAppViewHide':
-      unityI.SendMessage('VKSDK', 'PlayOff');
-      break;
-    case 'VKWebAppViewRestore':
-      unityI.SendMessage('VKSDK', 'PlayOn');
-      break;
-  }
-});
 
     </script>
   </body>
