@@ -44,7 +44,7 @@
                 border-radius: 3px;
                 width: 0%;
                 height: 100%;
-                background: #FF9A00;
+                background: #00BFFF;
             }
         </style>
     </head>
@@ -133,14 +133,14 @@
                     bridge.game.on('visibility_state_changed', state => sendMessageToUnity('OnVisibilityStateChanged', state))
 
                     let unityLoader = document.createElement('script')
-                    unityLoader.src = 'Build/VK36.loader.js'
+                    unityLoader.src = 'Build/VK38.loader.js'
                     unityLoader.onload = () => {
                         createUnityInstance(
                             canvas,
                             {
-                                dataUrl: 'Build/VK36.data.unityweb',
-                                frameworkUrl: 'Build/VK36.framework.js.unityweb',
-                                codeUrl: 'Build/VK36.wasm.unityweb',
+                                dataUrl: 'Build/VK38.data.unityweb',
+                                frameworkUrl: 'Build/VK38.framework.js.unityweb',
+                                codeUrl: 'Build/VK38.wasm.unityweb',
                                 streamingAssetsUrl: 'StreamingAssets',
                                 companyName: 'DefaultCompany',
                                 productName: 'Quiz',
