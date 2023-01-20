@@ -133,14 +133,14 @@
                     bridge.game.on('visibility_state_changed', state => sendMessageToUnity('OnVisibilityStateChanged', state))
 
                     let unityLoader = document.createElement('script')
-                    unityLoader.src = 'Build/VK30.loader.js'
+                    unityLoader.src = 'Build/VK31.loader.js'
                     unityLoader.onload = () => {
                         createUnityInstance(
                             canvas,
                             {
-                                dataUrl: 'Build/VK30.data.unityweb',
-                                frameworkUrl: 'Build/VK30.framework.js.unityweb',
-                                codeUrl: 'Build/VK30.wasm.unityweb',
+                                dataUrl: 'Build/VK31.data.unityweb',
+                                frameworkUrl: 'Build/VK31.framework.js.unityweb',
+                                codeUrl: 'Build/VK31.wasm.unityweb',
                                 streamingAssetsUrl: 'StreamingAssets',
                                 companyName: 'DefaultCompany',
                                 productName: 'Quiz',
